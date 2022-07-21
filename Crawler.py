@@ -6,7 +6,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 # from selenium.webdriver.chrome.service import Service as ChromeService
 # from webdriver_manager.chrome import ChromeDriverManager
-
 class crawl(str): 
     
     def data(self,name):
@@ -94,6 +93,7 @@ class crawl(str):
         for i in text:
             url_list.append(i.a['href'])
         return url_list
+   
     def __init__ (self,name):
         self.name = name 
 

@@ -216,7 +216,11 @@ def Hualien_lookup():
 def Hualien_hotel():
     url = 'https://www.booking.com/searchresults.zh-tw.html?label=gen173nr-1DCAEoggI46AdIM1gEaOcBiAEBmAEwuAEXyAEM2AED6AEBiAIBqAIDuAK7zuCWBsACAdICJDcyNDQyZWYxLWY2OTktNGJhZC1iNjEzLTE1NjM0OTFlOTg5MtgCBOACAQ&sid=80c3dd2e865839ba50f84a6b88e186fd&sb=1&sb_lp=1&src=index&src_elem=sb&error_url=https%3A%2F%2Fwww.booking.com%2Findex.zh-tw.html%3Flabel%3Dgen173nr-1DCAEoggI46AdIM1gEaOcBiAEBmAEwuAEXyAEM2AED6AEBiAIBqAIDuAK7zuCWBsACAdICJDcyNDQyZWYxLWY2OTktNGJhZC1iNjEzLTE1NjM0OTFlOTg5MtgCBOACAQ%26sid%3D80c3dd2e865839ba50f84a6b88e186fd%26sb_price_type%3Dtotal%26%26&ss=%E8%8A%B1%E8%93%AE&is_ski_area=0&checkin_year=&checkin_month=&checkout_year=&checkout_month=&group_adults=2&group_children=0&no_rooms=1&b_h4u_keep_filters=&from_sf=1&ss_raw=%E8%8A%B1%E8%93%AE&search_pageview_id=f57570de8fad009e'
     return redirect(url)
+@app.route('/Hualien/food',methods=["GET"])
+def Hualien_food():
+    url = "https://candicecity.com/55857/"
     
+    return render_template('Hualien_food.html')
 
 ##################
 # 這邊是 li flag裡面的 a tag超連結設定

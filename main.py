@@ -187,7 +187,8 @@ def Hualien_spot():
     data = Todo.query.filter_by(loc='花蓮市').all()
     if request.method == "POST":
         another = []
-        task_content = request.form['value']
+        # task_content = request.form['value']
+        task_content = request.form['content']
         for todo in Todo.query.all(): 
             # if todo._id > 5 : 
             if todo.title == task_content:

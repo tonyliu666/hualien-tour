@@ -140,3 +140,7 @@ class fig_store():
         return fig_store.fig
     def set_back():
         return fig_store.set
+class click_store():
+    set = False 
+    def set_back():
+        return click_store.set

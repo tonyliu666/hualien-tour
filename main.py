@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os,sys
 import re 
 from Crawler import crawl
-from Crawler import selenium,store,fig_store
+from Crawler import selenium,store,fig_store,click_store
 from send_email import SendEmail,Value
 app = Flask(__name__, template_folder='templates')
 base_dir = app.root_path
@@ -143,12 +143,12 @@ def Hualien_navigate():
         # if request.form.getlist('check') != None:
         #     return render_template('Hualien.html',click=True)
         # if request.form.get('OrderDay')!=None:
-        
         if request.form['s'] == "確定":
             fig_store.set = True
         elif request.form['s'] == "送出":
             value = request.form.get('OrderDay')
             Value.string = value
+            click_store.set = True
         elif request.form['s'] == "寄出":
             url = "https://www.google.com/search?q="+"花蓮"+Value.Value_back()
             tour=crawl(url).tour_guide(url)
@@ -169,7 +169,7 @@ def Hualien_navigate():
                 url = 'https://www.google.com/travel/things-to-do/see-all?dest_mid=%2Fm%2F025c70&dest_state_type=main&dest_src=yts&rf=EgwKCC9tLzBiM3lyKAE&q=%E8%8A%B1%E8%93%AE%E6%B5%B7%E7%81%98&ved=0CAAQ8IAIahgKEwig1r3ChIT5AhUAAAAAHQAAAAAQnAM&tcfs=EhcKDS9nLzExY2xocHRiNV8SBuiKseiTrg'
             fig_stars = crawl(url).google_search(url)
             fig_store.fig = fig_stars
-        return render_template('Hualien.html',figstars = fig_store.fig_back(),click=fig_store.set_back())       
+        return render_template('Hualien.html',figstars = fig_store.fig_back(),click=fig_store.set_back(),send_click = click_store.set_back())       
                 # redirect(url_for('Hualien_lookup',another = another))  
     else:
         return render_template('Hualien.html')
@@ -218,9 +218,12 @@ def Hualien_hotel():
     return redirect(url)
 @app.route('/Hualien/food',methods=["GET"])
 def Hualien_food():
-    url = "https://candicecity.com/55857/"
-    
     return render_template('Hualien_food.html')
+@app.route('/Hualien/transportation',methods=["GET"])
+def Hualien_traffic():
+    url = 'https://www.funhualien.com.tw/hualien-traffic'
+    return redirect(url)
+
 
 ##################
 # 這邊是 li flag裡面的 a tag超連結設定
@@ -313,6 +316,7 @@ def booking(variable):
         text = "為您推薦五筆優質旅館"
         return render_template('introduction.html',data = data,sel=sel,text =text,set=True)
         # return f"{sel[0]} "
+
     # except:
     #     return redirect(url_for('Hualien_spot'))
 if __name__ =='__main__':

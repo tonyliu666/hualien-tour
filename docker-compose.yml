@@ -1,0 +1,27 @@
+services:
+  flask:
+    build : /flask/
+    container_name: template_flask
+    expose: 
+      - 5000
+    depends_on:
+      - db
+  
+  db:
+    image: sqlite
+    container_name: sqlite
+    volumes:
+      - type: volume
+        source: db-data
+        target: /data
+      - type: bind
+        source: /src/sqlite.db
+        target: /src/sqlite.db
+    environment:
+      POSTGRES_DB: db_name
+      POSTGRES_USER: sqlite_name
+      POSTGRES_PASSWORD: sqlite_password
+    ports:
+      - 80:5000
+volumes:
+  db-data:

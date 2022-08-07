@@ -7,7 +7,7 @@ the first python flask project using docker-compose
 2. docker-compose -f docker-compose.yml up --build (if you would like to use detached mode ,you can add -d flag)
 3. open your browser and type **localhost:8080** and enjoy using it 
 
-==Write down my learing notes:==
+*Write down my learing notes:*
 >1. don't initialize your sql data using python SQLAlchemy(ORM) because of effectiveness ,instead using the original sql command(insert ,create) is much effective
 >2. The environment variables in docker compose file can be stored as env file to keep secure data 
 >3. docker file CMD vs ENTRYPOINT command . There are some tricks between them . 

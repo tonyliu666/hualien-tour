@@ -3,7 +3,7 @@ the first python flask project using docker-compose
 
 ### how to use ?
 > command:
-1. docker build -t main .(current working directory:./hulaien-tour)
+1. docker build -t main .(current working directory:./hulaien-tour) or using **docker pull tonyliu666/hualien-flask:latest** to pull down from docker hub
 2. docker-compose -f docker-compose.yml up --build (if you would like to use detached mode ,you can add -d flag)
 3. open your browser and type **localhost:8080** and enjoy using it 
 
